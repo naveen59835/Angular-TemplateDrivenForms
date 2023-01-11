@@ -1,0 +1,96 @@
+<form class="example-form" #addCustomerForm="ngForm"(submit)="addCustomer(addCustomerForm)">
+  <h4 style="color: palevioletred; font-weight: bolder;">We appreciate your feedback!</h4>
+<div class="example1">
+    <mat-form-field appearance="fill" class="example-full-width">
+      <mat-label>Enter your FirstName</mat-label>
+      <textarea matInput placeholder="FirstName" required [(ngModel)]="firstName" name="firstName" minlength="5" required #firstName1="ngModel"></textarea>
+     <span *ngIf="firstName1?.invalid &&(firstName1?.dirty ||firstName1?.touched)">
+      <span *ngIf="firstName1.errors?.['required']">First Name is mandatory field</span>
+      <span *ngIf="firstName1.errors?.['minlength']">First name should be minimum 5 characters</span>
+     </span>
+    
+      <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+    </mat-form-field>
+  </div>
+  <div class="example2">
+    <mat-form-field appearance="fill" class="example-full-width">
+      <mat-label>Enter your lastName</mat-label>
+      <textarea matInput placeholder="LastName" required [(ngModel)]="lastName" name="lastName" required  #lastName1="ngModel" minlength="5"></textarea>
+      <span *ngIf="lastName1?.invalid &&(lastName1?.dirty ||lastName1?.touched)">
+        <span *ngIf="lastName1.errors?.['required']">Last Name is mandatory field</span>
+        <span *ngIf="lastName1.errors?.['minlength']">last name should be minimum 5 characters</span>
+       </span>
+      <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+    </mat-form-field>
+  </div>
+  <div class="example3">
+    <mat-form-field appearance="fill" class="example-full-width">
+      <mat-label>Enter your Phone Number</mat-label>
+      <textarea matInput placeholder="Number"  required [(ngModel)]="Number" name="Number" required  #number="ngModel" minlength="10" maxlength="10"></textarea>
+      <span *ngIf="number?.invalid &&(number?.dirty ||number?.touched)">
+        <span *ngIf="number.errors?.['required']">number is mandatory field</span>
+        <span *ngIf="number.errors?.['minlength']">number should be minimum 10 characters</span>
+        <span *ngIf="number.errors?.['maxlength']">number should be max 10 characters</span>
+       </span>
+      <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+    </mat-form-field>
+  </div>
+  <div class="example4">
+    <mat-form-field appearance="fill" class="example-full-width">
+      <mat-label>Enter your email</mat-label>
+      <textarea matInput placeholder="pat@example.com" [formControl]="email" required ></textarea>
+      <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+  </div>
+  <div class="example5">
+    <mat-form-field appearance="fill" class="example-full-width">
+      <mat-label>Location You Visited</mat-label>
+      <mat-select [(ngModel)]="location" name="location" required>
+        <mat-option *ngFor="let eachCountry of countriess" [value]="eachCountry.id" >
+          {{eachCountry.countryName}}
+        </mat-option>
+      </mat-select>
+     
+     
+    
+      <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+    </mat-form-field>
+  </div>
+ 
+  <section class="example-section" >
+    <label class="example-margin"></label>
+    <mat-radio-group required>
+      Overall Rating:
+      <mat-radio-button class="example-margin" value="after">Excellent</mat-radio-button>
+      <mat-radio-button class="example-margin" value="before">Good</mat-radio-button>
+      <mat-radio-button class="example-margin" value="after">Average</mat-radio-button>
+      <mat-radio-button class="example-margin" value="before">Dissatisfied</mat-radio-button>
+      
+    </mat-radio-group>
+  </section>
+  <div class="example5">
+    <mat-form-field appearance="fill" class="example-full-width">
+      <mat-label>Any comments suggestions</mat-label>
+      <textarea matInput placeholder="Comments and suggestions" required ></textarea>
+      <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+    </mat-form-field>
+  </div>
+  <section>
+    <div class="example-label"></div>
+    <div class="example-button-row">
+     
+      <button mat-flat-button color="accent">Reset</button>
+      <button mat-flat-button color="warn" type="submit" [disabled]="!addCustomerForm.valid" (click)="openSnackBar()">Submit</button>
+    
+    </div>
+  </section>
+  
+   
+
+
+ 
+  
+  
+
+  
+  </form>
